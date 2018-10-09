@@ -1,6 +1,9 @@
 package com.taohuahua.wanandroid;
 
-import android.annotation.SuppressLint;
+import android.arch.lifecycle.Lifecycle;
+import android.arch.lifecycle.LifecycleOwner;
+import android.arch.lifecycle.LifecycleRegistry;
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,24 +12,34 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
-import com.taohuahua.wanandroid.sdk.banner.BannerEntity;
-import com.taohuahua.wanandroid.sdk.banner.BannerResponse;
-import com.taohuahua.wanandroid.sdk.banner.BannerServiceImpl;
-
-import java.util.List;
-
-import io.reactivex.functions.Consumer;
+import com.taohuahua.wanandroid.sdk.banner.BannerViewModel;
 
 /**
  * fragment的基类
  */
-public class BaseFragment extends Fragment {
-    private BannerServiceImpl mService;
+public class BaseFragment extends Fragment implements LifecycleOwner {
+    private LifecycleRegistry registry = new LifecycleRegistry(this);
+    private BannerViewModel mBannerViewModel;
+    private Button mBtnClicked;
+
+    @Override
+    public Lifecycle getLifecycle() {
+        return registry;
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        registry.handleLifecycleEvent(Lifecycle.Event.ON_CREATE);
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        mBtnClicked.setOnClickListener(v -> mBannerViewModel.getBannerList().observe(getActivity(), listResource -> Log.i("thh", "onChanged")));
     }
 
     @Nullable
@@ -34,19 +47,19 @@ public class BaseFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_base, container, false);
-        initView();
+        initView(rootView);
         return rootView;
     }
 
-    @SuppressLint("CheckResult")
-    private void initView() {
-        mService = new BannerServiceImpl();
-        mService.getHomeBanner().subscribe(new Consumer<BannerResponse>() {
-            @Override
-            public void accept(BannerResponse bannerResponse) throws Exception {
-                Log.i("thh", bannerResponse.getData() + " ");
-            }
-        });
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    private void initView(View rootView) {
+        mBtnClicked = rootView.findViewById(R.id.btn);
+        mBannerViewModel = ViewModelProviders.of(getActivity()).get(BannerViewModel.class);
     }
 
 }

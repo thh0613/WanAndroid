@@ -1,6 +1,10 @@
 package com.taohuahua.wanandroid.sdk.banner;
 
-import io.reactivex.Observable;
+import com.taohuahua.sdk.ApiResponse;
+
+import java.util.List;
+
+import io.reactivex.Flowable;
 import retrofit2.http.GET;
 
 import static com.taohuahua.wanandroid.constants.UrlConstants.BANNER_PATH;
@@ -11,6 +15,6 @@ import static com.taohuahua.wanandroid.constants.UrlConstants.BANNER_PATH;
 public interface IBannerService {
 
     @GET(BANNER_PATH)
-    Observable<BannerResponse> getHomeBanner();
+    Flowable<ApiResponse<List<BannerEntity>>> getHomeBanner();
 
 }

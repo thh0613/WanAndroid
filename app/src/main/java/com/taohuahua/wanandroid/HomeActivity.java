@@ -1,15 +1,16 @@
 package com.taohuahua.wanandroid;
 
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.taohuahua.wanandroid.adapter.ViewPagerAdapter;
+import com.taohuahua.wanandroid.sdk.banner.BannerViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
