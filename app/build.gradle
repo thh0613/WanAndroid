@@ -36,6 +36,7 @@ dependencies {
     implementation parent.ext.libConvertGson
     implementation parent.ext.libAdapterRxjava
     implementation parent.ext.libReactiveStreams
+    implementation parent.ext.libFresco
 
     compile project(path: ':sdk')
     testImplementation 'junit:junit:4.12'

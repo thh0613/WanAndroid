@@ -1,7 +1,8 @@
-package com.taohuahua.wanandroid;
+package com.taohuahua.wanandroid.view;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -9,8 +10,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.taohuahua.wanandroid.R;
 import com.taohuahua.wanandroid.adapter.ViewPagerAdapter;
-import com.taohuahua.wanandroid.sdk.banner.BannerViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,9 +33,9 @@ public class HomeActivity extends AppCompatActivity {
             R.drawable.tab_me_selector
     };
 
-    private List<BaseFragment> mTabFragments = new ArrayList<>();
+    private List<Fragment> mTabFragments = new ArrayList<>();
 
-    private BaseFragment mHomeMainFragment;
+    private HomeMainFragment mHomeMainFragment;
     private BaseFragment mHomeProjectFragment;
     private BaseFragment mHomeNaviFragment;
     private BaseFragment mHomeMeFragment;
@@ -65,7 +66,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void setViewPager() {
-        mHomeMainFragment = new BaseFragment();
+        mHomeMainFragment = new HomeMainFragment();
         mHomeProjectFragment = new BaseFragment();
         mHomeNaviFragment = new BaseFragment();
         mHomeMeFragment = new BaseFragment();

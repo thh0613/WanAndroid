@@ -1,4 +1,4 @@
-package com.taohuahua.wanandroid.manager;
+package com.taohuahua.sdk.manager;
 
 
 import io.reactivex.Observable;

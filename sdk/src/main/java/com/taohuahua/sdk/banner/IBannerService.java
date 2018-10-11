@@ -1,20 +1,19 @@
-package com.taohuahua.wanandroid.sdk.banner;
+package com.taohuahua.sdk.banner;
 
 import com.taohuahua.sdk.ApiResponse;
+import com.taohuahua.sdk.constants.UrlConstants;
 
 import java.util.List;
 
 import io.reactivex.Flowable;
 import retrofit2.http.GET;
 
-import static com.taohuahua.wanandroid.constants.UrlConstants.BANNER_PATH;
-
 /**
  * 首页banner位
  */
 public interface IBannerService {
 
-    @GET(BANNER_PATH)
+    @GET(UrlConstants.BANNER_PATH)
     Flowable<ApiResponse<List<BannerEntity>>> getHomeBanner();
 
 }

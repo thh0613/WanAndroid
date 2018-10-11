@@ -1,4 +1,4 @@
-package com.taohuahua.wanandroid.constants;
+package com.taohuahua.sdk.constants;
 
 /**
  * 请求url常量

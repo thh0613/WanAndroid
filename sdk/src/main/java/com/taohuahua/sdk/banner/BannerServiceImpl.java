@@ -1,8 +1,8 @@
-package com.taohuahua.wanandroid.sdk.banner;
+package com.taohuahua.sdk.banner;
 
 import com.taohuahua.sdk.ApiResponse;
-import com.taohuahua.wanandroid.manager.BaseHttpService;
-import com.taohuahua.wanandroid.manager.RetrofitServiceManager;
+import com.taohuahua.sdk.manager.BaseHttpService;
+import com.taohuahua.sdk.manager.RetrofitServiceManager;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.taohuahua.wanandroid.sdk.banner;
+package com.taohuahua.sdk.banner;
 
 import java.io.Serializable;
 

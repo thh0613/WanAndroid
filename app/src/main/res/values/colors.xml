@@ -5,4 +5,11 @@
     <color name="colorAccent">#D81B60</color>
     <color name="color_fff">#ffffff</color>
     <color name="color_bd">#BDBDBD</color>
+    <color name="color_333">#333333</color>
+    <color name="color_888">#888888</color>
+    <color name="color_dedede">#dedede</color>
+    <color name="color_ededed">#ededed</color>
+    <color name="color_f0">#f0f0f0</color>
+    <color name="color_ff_alpha50">#7dffffff</color>
+
 </resources>

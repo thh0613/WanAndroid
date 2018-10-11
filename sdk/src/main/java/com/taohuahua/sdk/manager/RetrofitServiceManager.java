@@ -1,4 +1,4 @@
-package com.taohuahua.wanandroid.manager;
+package com.taohuahua.sdk.manager;
 
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 

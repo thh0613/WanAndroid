@@ -1,4 +1,4 @@
-package com.taohuahua.wanandroid.sdk.banner;
+package com.taohuahua.sdk.banner;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;

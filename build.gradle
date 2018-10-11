@@ -20,6 +20,7 @@ allprojects {
         jcenter()
     }
     ext {
+        libFresco = "com.facebook.fresco:fresco:1.10.0"
         libReactiveStreams = "android.arch.lifecycle:reactivestreams:1.1.1"
         libLifecyle = "android.arch.lifecycle:extensions:1.1.1"
         libAppcompat = 'com.android.support:appcompat-v7:27.1.1'

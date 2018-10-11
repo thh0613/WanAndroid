@@ -1,28 +1,29 @@
-package com.taohuahua.wanandroid.sdk.banner;
+package com.taohuahua.sdk.banner;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.LiveDataReactiveStreams;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
-import android.util.Log;
 
 import com.taohuahua.sdk.Resource;
 
 import java.util.List;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
 
 /**
  * banner
  */
 public class BannerViewModel extends ViewModel {
     private BannerRepository mBannerRepository;
-    public MutableLiveData<Resource<List<BannerEntity>>> bannerResponse = new MutableLiveData<>();
+    public LiveData<Resource<List<BannerEntity>>> bannerResponse = new MutableLiveData<>();
 
     public BannerViewModel() {
         mBannerRepository = new BannerRepository();
         getBannerResponse();
     }
 
-    public MutableLiveData<Resource<List<BannerEntity>>> getBannerList() {
+    public LiveData<Resource<List<BannerEntity>>> getBannerList() {
         return bannerResponse;
     }
 
@@ -33,8 +34,7 @@ public class BannerViewModel extends ViewModel {
     }
 
     private void loadBanner() {
-        bannerResponse.setValue(LiveDataReactiveStreams.fromPublisher(mBannerRepository
-                .getBannerList()).getValue());
+        bannerResponse = LiveDataReactiveStreams.fromPublisher(mBannerRepository.getBannerList().observeOn(AndroidSchedulers.mainThread()));
     }
 
 }
