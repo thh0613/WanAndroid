@@ -1,10 +1,12 @@
 package com.taohuahua.wanandroid.widget;
 
+import android.arch.lifecycle.Lifecycle;
+import android.arch.lifecycle.LifecycleObserver;
+import android.arch.lifecycle.OnLifecycleEvent;
 import android.content.Context;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -13,6 +15,7 @@ import com.taohuahua.wanandroid.R;
 import com.taohuahua.wanandroid.adapter.BannerAdapter;
 import com.taohuahua.wanandroid.simplelistener.SimplePageChangeListener;
 import com.taohuahua.wanandroid.util.DensityUtil;
+import com.taohuahua.wanandroid.util.WeakHandler;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,12 +23,14 @@ import java.util.List;
 /**
  * banner轮播图组件
  */
-public class BannerSlideView extends ConstraintLayout {
+public class BannerSlideView extends ConstraintLayout implements LifecycleObserver {
     private static final long SCROLL_TIME_OFFSET = 3000;
     private BannerAdapter mBannerAdapter;
     private LinearLayout mDotContainer;
     private ViewPager mBannerViewPager;
     private List<BannerEntity> mBannerList;
+    private WeakHandler mBannerHandler;
+    private int mBannerPosition = 0;
 
     public BannerSlideView(Context context) {
         super(context);
@@ -37,6 +42,16 @@ public class BannerSlideView extends ConstraintLayout {
 
     public BannerSlideView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
+    public void onResume() {
+        startAutoScroll();
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
+    public void onPause() {
+        stopAutoScroll();
     }
 
     @Override
@@ -62,13 +77,16 @@ public class BannerSlideView extends ConstraintLayout {
                     return;
                 }
 
-                for (int idx = 0; idx < mDotContainer.getChildCount(); idx++) {
+                int childCount = mDotContainer.getChildCount();
+                for (int idx = 0; idx < childCount; idx++) {
                     mDotContainer.getChildAt(idx).setEnabled(false);
                 }
 
-                if (mDotContainer.getChildAt(position) != null) {
-                    mDotContainer.getChildAt(position).setEnabled(true);
+                if (mDotContainer.getChildAt(position % childCount) != null) {
+                    mDotContainer.getChildAt(position % childCount).setEnabled(true);
                 }
+
+                mBannerPosition = position % childCount;
             }
         });
     }
@@ -91,6 +109,30 @@ public class BannerSlideView extends ConstraintLayout {
                     mDotContainer.addView(dot, layoutParams);
                 }
             }
+            startAutoScroll();
+        }
+    }
+
+    private void startAutoScroll() {
+        if (mBannerHandler == null) {
+            mBannerHandler = new WeakHandler();
+        }
+
+        mBannerHandler.removeCallbacksAndMessages(null);
+        mBannerHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mBannerPosition = (mBannerPosition + 1) % mDotContainer.getChildCount();
+                mBannerViewPager.setCurrentItem(mBannerPosition, true);
+                mBannerHandler.postDelayed(this, SCROLL_TIME_OFFSET);
+
+            }
+        }, SCROLL_TIME_OFFSET);
+    }
+
+    private void stopAutoScroll() {
+        if (mBannerHandler != null) {
+            mBannerHandler.removeCallbacksAndMessages(null);
         }
     }
 }

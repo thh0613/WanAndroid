@@ -33,7 +33,7 @@ public class HomeActivity extends AppCompatActivity {
             R.drawable.tab_me_selector
     };
 
-    private List<Fragment> mTabFragments = new ArrayList<>();
+    private List<BaseFragment> mTabFragments = new ArrayList<>();
 
     private HomeMainFragment mHomeMainFragment;
     private BaseFragment mHomeProjectFragment;

@@ -4,7 +4,6 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +15,7 @@ import com.taohuahua.wanandroid.widget.BannerSlideView;
 /**
  * 首页
  */
-public class HomeMainFragment extends Fragment {
+public class HomeMainFragment extends BaseFragment {
     private BannerViewModel mBannerViewModel;
     private BannerSlideView mBannerSlideView;
 
@@ -31,6 +30,7 @@ public class HomeMainFragment extends Fragment {
 
     private void findView(View rootView) {
         mBannerSlideView = rootView.findViewById(R.id.fragment_home_banner);
+        getLifecycle().addObserver(mBannerSlideView);
         initView();
     }
 
