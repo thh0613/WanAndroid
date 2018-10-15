@@ -17,11 +17,6 @@ public class Resource<T> {
         this.message = message;
     }
 
-    @Nullable
-    public T getData() {
-        return data;
-    }
-
     public static <T> Resource<T> success(@NonNull T data) {
         return new Resource<>(Status.SUCCESS, data, null);
     }

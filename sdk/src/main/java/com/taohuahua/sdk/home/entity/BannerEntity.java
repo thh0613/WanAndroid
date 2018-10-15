@@ -1,4 +1,4 @@
-package com.taohuahua.sdk.banner;
+package com.taohuahua.sdk.home.entity;
 
 import java.io.Serializable;
 

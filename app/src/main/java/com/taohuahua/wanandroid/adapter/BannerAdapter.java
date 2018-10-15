@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.taohuahua.sdk.banner.BannerEntity;
+import com.taohuahua.sdk.home.entity.BannerEntity;
 import com.taohuahua.wanandroid.R;
 import com.taohuahua.wanandroid.widget.RecyclingPagerAdapter;
 

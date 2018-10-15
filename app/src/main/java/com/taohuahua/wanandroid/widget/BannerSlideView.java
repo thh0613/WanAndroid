@@ -10,7 +10,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import com.taohuahua.sdk.banner.BannerEntity;
+import com.taohuahua.sdk.home.entity.BannerEntity;
 import com.taohuahua.wanandroid.R;
 import com.taohuahua.wanandroid.adapter.BannerAdapter;
 import com.taohuahua.wanandroid.simplelistener.SimplePageChangeListener;
@@ -122,6 +122,9 @@ public class BannerSlideView extends ConstraintLayout implements LifecycleObserv
         mBannerHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
+                if (mDotContainer.getChildCount() == 0) {
+                    return;
+                }
                 mBannerPosition = (mBannerPosition + 1) % mDotContainer.getChildCount();
                 mBannerViewPager.setCurrentItem(mBannerPosition, true);
                 mBannerHandler.postDelayed(this, SCROLL_TIME_OFFSET);

@@ -1,6 +1,7 @@
 package com.taohuahua.sdk.manager;
 
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+import com.taohuahua.sdk.ByteArrayBodyConvert;
 
 import java.util.concurrent.TimeUnit;
 
@@ -23,6 +24,7 @@ public class RetrofitServiceManager {
 
         public static final Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://www.wanandroid.com")
+                .addConverterFactory(ByteArrayBodyConvert.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(httpClient)
