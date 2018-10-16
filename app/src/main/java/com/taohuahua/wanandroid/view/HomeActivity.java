@@ -13,13 +13,15 @@ import android.widget.TextView;
 import com.taohuahua.wanandroid.R;
 import com.taohuahua.wanandroid.adapter.ViewPagerAdapter;
 
+import org.jetbrains.annotations.Nullable;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * 首页
  */
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends BaseActivity {
     private static final int[] TAB_TITLES = new int[]{
             R.string.home_main,
             R.string.home_project,
@@ -46,19 +48,13 @@ public class HomeActivity extends AppCompatActivity {
     private ViewPagerAdapter mViewPagerAdapter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
-        findView();
-        initView();
-    }
-
-    private void findView() {
+    public void beforeInitView() {
         mViewPager = findViewById(R.id.home_view_pager);
         mTabLayout = findViewById(R.id.home_bottom_tab);
     }
 
-    private void initView() {
+    @Override
+    public void initView() {
         setTabLayout();
         setViewPager();
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
@@ -94,5 +90,10 @@ public class HomeActivity extends AppCompatActivity {
             img.setImageResource(TAB_IMGS[i]);
             mTabLayout.addTab(tab);
         }
+    }
+
+    @Override
+    public int getLayoutResId() {
+        return R.layout.activity_home;
     }
 }

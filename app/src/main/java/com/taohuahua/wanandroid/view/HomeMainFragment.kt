@@ -30,24 +30,27 @@ class HomeMainFragment : BaseFragment() {
     fun findView(rootView: View) {
         mHomeViewModel = ViewModelProviders.of(activity!!).get(HomeViewModel::class.java)
         rootView.run {
-            mBannerSlideView = findViewById(R.id.fragment_home_banner)
+            mBannerSlideView = LayoutInflater.from(context).inflate(R.layout.widget_banner_slide_view, null) as BannerSlideView
             mArticleRecycle = findViewById(R.id.home_article_list)
             lifecycle.addObserver(mBannerSlideView)
         }
 
         var layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         mArticleRecycle.layoutManager = layoutManager
+        mArticleAdapter = ArticleAdapter( R.layout.item_article, ArrayList())
+        mArticleRecycle.adapter = mArticleAdapter
     }
 
     fun getData() {
         mHomeViewModel.bannerList.observe(activity!!, Observer { it ->
             mBannerSlideView.setBannerData(it?.data)
+            mArticleAdapter.setHeaderView(mBannerSlideView)
+            mArticleAdapter.setHeaderAndEmpty(true)
         })
 
         mHomeViewModel.homeArticleResponse.observe(activity!!, Observer { it ->
             if (it?.data != null) {
-                mArticleAdapter = ArticleAdapter(context!!, R.layout.item_article, it.data!!.articleList)
-                mArticleRecycle.adapter = mArticleAdapter
+                mArticleAdapter.setNewData(it.data!!.articleList)
             }
         })
 

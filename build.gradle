@@ -19,9 +19,12 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven {
+            url "https://jitpack.io"
+        }
     }
     ext {
-        libBaseAdapter = "com.zhy:base-rvadapter:3.0.3"
+        libBaseAdapter = 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.42'
         libKotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         libFresco = "com.facebook.fresco:fresco:1.10.0"
         libReactiveStreams = "android.arch.lifecycle:reactivestreams:1.1.1"
