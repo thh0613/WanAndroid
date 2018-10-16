@@ -1,13 +1,14 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-
+    ext.kotlin_version = '1.2.71'
     repositories {
         google()
         jcenter()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.2.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -20,6 +21,8 @@ allprojects {
         jcenter()
     }
     ext {
+        libBaseAdapter = "com.zhy:base-rvadapter:3.0.3"
+        libKotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         libFresco = "com.facebook.fresco:fresco:1.10.0"
         libReactiveStreams = "android.arch.lifecycle:reactivestreams:1.1.1"
         libLifecyle = "android.arch.lifecycle:extensions:1.1.1"

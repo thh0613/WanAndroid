@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.taohuahua.wanandroid.widget.ArticleDetailView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center_vertical">
+    <com.taohuahua.wanandroid.widget.MsgView
+        android:id="@+id/fresh_label"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        app:mv_backgroundColor="@color/color_fff"
+        app:mv_cornerRadius="2dp"
+        app:mv_strokeWidth="1dp"
+        app:mv_strokeColor="@color/colorAccent"
+        android:text="新"
+        android:layout_marginRight="8dp"
+        android:textColor="@color/colorAccent"
+        android:gravity="center"/>
+
+    <LinearLayout
+        android:id="@+id/label_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginRight="8dp">
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/article_author"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="作者：小编"
+        android:textSize="10dp"
+       />
+
+    <TextView
+        android:textSize="10dp"
+        android:id="@+id/article_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="分类：干货资源／课程推荐"
+        android:layout_marginLeft="8dp"/>
+
+    <TextView
+        android:id="@+id/publish_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="10天前"
+        android:textSize="10dp"
+        android:layout_marginLeft="8dp"/>
+
+</com.taohuahua.wanandroid.widget.ArticleDetailView>
