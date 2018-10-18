@@ -9,6 +9,7 @@ import com.taohuahua.sdk.Resource;
 import com.taohuahua.sdk.home.entity.ArticleResponse;
 import com.taohuahua.sdk.home.entity.BannerEntity;
 import com.taohuahua.sdk.home.entity.HotKeyEntity;
+import com.taohuahua.sdk.home.entity.HotWebsiteEntity;
 
 import java.util.List;
 
@@ -23,6 +24,7 @@ public class HomeViewModel extends ViewModel {
     private LiveData<Resource<List<HotKeyEntity>>> mHotKeyResponse = new MutableLiveData<>();
     private LiveData<Resource<ArticleResponse>> mSearchResponse = new MutableLiveData<>();
     private LiveData<Resource<ArticleResponse>> mHomeArticleResponse = new MutableLiveData<>();
+    private LiveData<Resource<List<HotWebsiteEntity>>> mHotWebsiteResponse = new MutableLiveData<>();
 
     public HomeViewModel() {
         mHomeRepository = new HomeRepository();
@@ -55,10 +57,18 @@ public class HomeViewModel extends ViewModel {
         return mHomeArticleResponse;
     }
 
+    public LiveData<Resource<List<HotWebsiteEntity>>> getHotWebsiteResponse() {
+        if (mHotWebsiteResponse.getValue() == null) {
+            mHotWebsiteResponse = LiveDataReactiveStreams.fromPublisher(mHomeRepository.getHotWebsite());
+        }
+        return mHotWebsiteResponse;
+    }
+
     private void getBannerResponse() {
         if (mBannerResponse.getValue() == null) {
             mBannerResponse = LiveDataReactiveStreams.fromPublisher(mHomeRepository.getBannerList
                     ().observeOn(AndroidSchedulers.mainThread()));
         }
     }
+
 }

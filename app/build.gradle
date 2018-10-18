@@ -39,6 +39,8 @@ dependencies {
     implementation parent.ext.libReactiveStreams
     implementation parent.ext.libFresco
     implementation parent.ext.libBaseAdapter
+    implementation parent.ext.libFlexBoxLayout
+    implementation parent.ext.libRecyclerView
 
     compile project(path: ':sdk')
     testImplementation 'junit:junit:4.12'

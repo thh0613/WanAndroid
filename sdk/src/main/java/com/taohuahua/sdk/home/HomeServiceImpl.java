@@ -4,6 +4,7 @@ import com.taohuahua.sdk.ApiResponse;
 import com.taohuahua.sdk.home.entity.ArticleResponse;
 import com.taohuahua.sdk.home.entity.BannerEntity;
 import com.taohuahua.sdk.home.entity.HotKeyEntity;
+import com.taohuahua.sdk.home.entity.HotWebsiteEntity;
 import com.taohuahua.sdk.manager.BaseHttpService;
 import com.taohuahua.sdk.manager.RetrofitServiceManager;
 
@@ -13,7 +14,7 @@ import io.reactivex.Flowable;
 
 
 /**
- * banner接口实现
+ * home 相关接口实现
  */
 public class HomeServiceImpl extends BaseHttpService {
     // 单例
@@ -36,5 +37,9 @@ public class HomeServiceImpl extends BaseHttpService {
 
     public Flowable<ApiResponse<ArticleResponse>> getHomeArticle() {
         return InstanceHolder.SERVICE.getHomeArticle();
+    }
+
+    public Flowable<ApiResponse<List<HotWebsiteEntity>>> getHotWebsite() {
+        return InstanceHolder.SERVICE.getHotWebsite();
     }
 }

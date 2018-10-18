@@ -5,6 +5,7 @@ import com.taohuahua.sdk.constants.UrlConstants;
 import com.taohuahua.sdk.home.entity.ArticleResponse;
 import com.taohuahua.sdk.home.entity.BannerEntity;
 import com.taohuahua.sdk.home.entity.HotKeyEntity;
+import com.taohuahua.sdk.home.entity.HotWebsiteEntity;
 
 import java.util.List;
 
@@ -31,4 +32,7 @@ public interface IHomeService {
 
     @GET(UrlConstants.HOME_ARTICLE_PATH)
     Flowable<ApiResponse<ArticleResponse>> getHomeArticle();
+
+    @GET(UrlConstants.PATH_WEBSITE)
+    Flowable<ApiResponse<List<HotWebsiteEntity>>> getHotWebsite();
 }

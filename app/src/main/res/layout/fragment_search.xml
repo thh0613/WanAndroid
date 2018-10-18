@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_fff">
+
+    <android.support.v7.widget.SearchView
+        android:id="@+id/search_view"
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginRight="50dp"
+        android:background="@drawable/search_view_shape"
+        app:layout_constraintTop_toTopOf="parent"
+        app:queryHint="@string/home_search_hint"
+        app:searchIcon="@drawable/icon_search_view"/>
+
+    <TextView
+        android:id="@+id/cancel_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:text="@string/cancel"
+        android:textColor="@color/colorPrimary"
+        android:textSize="12dp"
+        app:layout_constraintBottom_toBottomOf="@id/search_view"
+        app:layout_constraintLeft_toRightOf="@id/search_view"
+        app:layout_constraintTop_toTopOf="@id/search_view"/>
+
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/color_ededed"
+        app:layout_constraintTop_toBottomOf="@id/search_view"/>
+
+    <TextView
+        android:id="@+id/history_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="6dp"
+        android:drawableLeft="@drawable/ic_search_histroy"
+        android:drawablePadding="8dp"
+        android:text="@string/history_hint"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/history_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="6dp"
+        app:layout_constraintTop_toBottomOf="@id/history_hint"/>
+
+    <View
+        android:id="@+id/divider_history"
+        android:layout_width="match_parent"
+        android:layout_height="12dp"
+        android:layout_marginTop="4dp"
+        android:background="@color/color_ededed"
+        app:layout_constraintTop_toBottomOf="@id/history_list"/>
+
+    <TextView
+        android:id="@+id/hot_search_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="6dp"
+        android:drawableLeft="@drawable/ic_search_hot"
+        android:drawablePadding="8dp"
+        android:text="@string/hot_search"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider_history"/>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/hot_search_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="6dp"
+        app:layout_constraintTop_toBottomOf="@id/hot_search_hint"/>
+
+    <View
+        android:id="@+id/divider_hot_key"
+        android:layout_width="match_parent"
+        android:layout_height="12dp"
+        android:layout_marginTop="4dp"
+        android:background="@color/color_ededed"
+        app:layout_constraintTop_toBottomOf="@id/hot_search_list"/>
+
+    <TextView
+        android:id="@+id/hot_website_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="6dp"
+        android:drawableLeft="@drawable/ic_search_histroy"
+        android:drawablePadding="8dp"
+        android:text="@string/recently_used_website"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider_hot_key"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/hot_website_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="6dp"
+        app:layout_constraintTop_toBottomOf="@id/hot_website_hint"/>
+
+</android.support.constraint.ConstraintLayout>

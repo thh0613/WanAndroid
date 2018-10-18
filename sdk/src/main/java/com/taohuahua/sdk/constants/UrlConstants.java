@@ -10,4 +10,5 @@ public class UrlConstants {
     public static final String HOT_KEY_PATH = "/hotkey/json";
     public static final String SERACH_PATH = "/article/query/0/json";
     public static final String HOME_ARTICLE_PATH = "article/list/0/json";
+    public static final String PATH_WEBSITE = "/friend/json";
 }

@@ -24,6 +24,8 @@ allprojects {
         }
     }
     ext {
+        libRecyclerView = 'com.android.support:recyclerview-v7:27.1.1'
+        libFlexBoxLayout = 'com.google.android:flexbox:1.0.0'
         libBaseAdapter = 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.42'
         libKotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         libFresco = "com.facebook.fresco:fresco:1.10.0"

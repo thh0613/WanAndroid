@@ -9,6 +9,7 @@ import com.taohuahua.sdk.Resource;
 import com.taohuahua.sdk.home.entity.ArticleResponse;
 import com.taohuahua.sdk.home.entity.BannerEntity;
 import com.taohuahua.sdk.home.entity.HotKeyEntity;
+import com.taohuahua.sdk.home.entity.HotWebsiteEntity;
 
 import java.util.List;
 
@@ -135,6 +136,34 @@ public class HomeRepository {
             @Override
             protected Flowable<ApiResponse<ArticleResponse>> createCall() {
                 return mHomeService.getHomeArticle();
+            }
+        }.getAsLiveData().toFlowable(BackpressureStrategy.BUFFER);
+    }
+
+    public Flowable<Resource<List<HotWebsiteEntity>>> getHotWebsite() {
+        return new NetworkBoundResource<List<HotWebsiteEntity>, List<HotWebsiteEntity>>() {
+
+
+            @Override
+            protected void saveCallResult(@NonNull List<HotWebsiteEntity> item) {
+
+            }
+
+            @Override
+            protected boolean shouldFetch(@Nullable List<HotWebsiteEntity> data) {
+                return true;
+            }
+
+            @NonNull
+            @Override
+            protected Flowable<List<HotWebsiteEntity>> loadFromDb() {
+                return null;
+            }
+
+            @NonNull
+            @Override
+            protected Flowable<ApiResponse<List<HotWebsiteEntity>>> createCall() {
+                return mHomeService.getHotWebsite();
             }
         }.getAsLiveData().toFlowable(BackpressureStrategy.BUFFER);
     }
